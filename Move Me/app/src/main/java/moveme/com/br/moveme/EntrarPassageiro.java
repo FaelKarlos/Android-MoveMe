@@ -21,7 +21,13 @@ public class EntrarPassageiro extends AppCompatActivity {
         int id = v.getId();
 
         if (id == R.id.btnEntrarUsuario){
-            Intent it = new Intent(this, TelaEntradaUsuario.class);
+            Intent it = new Intent(this, TelaEntradaPassageiro.class);
+            startActivity(it);
+        } else if(id == R.id.txtCadastre_se){
+            Intent it = new Intent(this, CadastroPassageiro.class);
+            startActivity(it);
+        } else if(id == R.id.txtIrRedefinirSenhaPassageiro){
+            Intent it = new Intent(this, RedefinirSenhaPassageiro.class);
             startActivity(it);
         }
     }

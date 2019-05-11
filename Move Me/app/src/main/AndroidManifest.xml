@@ -18,7 +18,9 @@
         </activity>
         <activity android:name=".EntrarPassageiro" />
         <activity android:name=".EntrarMotorista" />
-        <activity android:name=".TelaEntradaUsuario"></activity>
+        <activity android:name=".TelaEntradaPassageiro" />
+        <activity android:name=".CadastroPassageiro" />
+        <activity android:name=".RedefinirSenhaPassageiro" />
     </application>
 
 </manifest>
