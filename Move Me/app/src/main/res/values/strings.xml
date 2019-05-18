@@ -13,4 +13,10 @@
     <string name="lbl_esqueceu_senha">Esqueceu a senha?</string>
     <string name="lbl_redefinir">redefinir</string>
     <string name="lbl_acessar">Acessar</string>
+    <string name="lbl_nome_cadastro_passageiro">Nome</string>
+    <string name="lbl_sobrenome_cadastro_passageiro">Sobrenome</string>
+    <string name="lbl_cpf_passageiro">CPF</string>
+    <string name="lbl_email_passageiro">E-mail</string>
+    <string name="lbl_telefone_passageiro">Telefone</string>
+    <string name="lbl_senha_passageiro">Senha</string>
 </resources>
