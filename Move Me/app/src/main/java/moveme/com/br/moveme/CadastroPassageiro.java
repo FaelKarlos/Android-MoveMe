@@ -12,6 +12,8 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.concurrent.ExecutionException;
+
 public class CadastroPassageiro extends AppCompatActivity {
 
     private EditText nome, sobrenome, cpf, email, telefone, senha;
@@ -60,12 +62,24 @@ public class CadastroPassageiro extends AppCompatActivity {
 
         System.out.println("Agora a de json para passageiro");
         Gson gson1 = new Gson();
+        System.out.println("Esse do cadastro: " + jsonUsuario.toString());
         JSONObject object = null;
         try {
             object = new JSONObject(jsonUsuario);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        System.out.println("json objeto: " + object.toString());
+        String r = "";
+
+        try {
+            Passageiro retorno = new HttpServicePassageiro(jsonUsuario).execute().get();
+            r = retorno.toString();
+
+            System.out.println("Retorno web service: " + r);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }
