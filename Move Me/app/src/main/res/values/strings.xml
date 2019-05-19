@@ -2,11 +2,11 @@
     <string name="app_name">Move Me</string>
     <string name="lbl_move_me">Move Me</string>
     <string name="lbl_bem_vindo">Bem-vindo ao Move Me</string>
-    <string name="lbl_voce_e">Você é</string>
+    <string name="lbl_voce_e">Acessar como?</string>
     <string name="btn_motorista">Motorista</string>
     <string name="btn_passageiro">Passageiro</string>
     <string name="lbl_sua_primeira_vez_entrar_usuario">Sua primeira vez?</string>
-    <string name="lbl_cadastre_se_aqui_usuario">Cadastre-se</string>
+    <string name="lbl_cadastre_se_aqui_usuario">cadastre-se</string>
     <string name="lbl_aqui_usuario">aqui</string>
     <string name="lbl_usuario">Usuário</string>
     <string name="lbl_senha">Senha</string>

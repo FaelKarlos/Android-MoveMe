@@ -1,4 +1,4 @@
-package moveme.com.br.moveme;
+package moveme.com.br.moveme.modelos;
 
 public class Passageiro {
     private Integer id;

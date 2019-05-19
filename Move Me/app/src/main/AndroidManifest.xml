@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="moveme.com.br.moveme">
 
+    //Permissão para o aplicativo acessar a internet para consumir os serviços web
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,20 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".EntrarPassageiro" />
-        <activity android:name=".EntrarMotorista" />
-        <activity android:name=".TelaEntradaPassageiro" />
-        <activity android:name=".CadastroPassageiro">
+        <activity android:name=".atividades.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RedefinirSenhaPassageiro" />
+        <activity android:name=".atividades.EntrarPassageiro" />
+        <activity android:name=".atividades.EntrarMotorista" />
+        <activity android:name=".atividades.TelaEntradaPassageiro" />
+        <activity android:name=".atividades.CadastroPassageiro" />
+        <activity android:name=".atividades.RedefinirSenhaPassageiro" />
     </application>
 
 </manifest>

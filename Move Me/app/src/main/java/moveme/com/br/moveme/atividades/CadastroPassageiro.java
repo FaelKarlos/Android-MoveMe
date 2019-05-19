@@ -1,4 +1,4 @@
-package moveme.com.br.moveme;
+package moveme.com.br.moveme.atividades;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +13,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
+
+import moveme.com.br.moveme.R;
+import moveme.com.br.moveme.conexao.webservices.HttpServicePassageiro;
+import moveme.com.br.moveme.modelos.Passageiro;
 
 public class CadastroPassageiro extends AppCompatActivity {
 
@@ -32,7 +36,10 @@ public class CadastroPassageiro extends AppCompatActivity {
         senha = (EditText) findViewById(R.id.edtSenha);
     }
 
+    //Metodo para cadastrar o passageiro
     public void cadastrarPassgairo(View v){
+
+        //Pega os valores dos EditText
         String nomePassageiro = nome.getText().toString();
         String sobrenomePassageiro = sobrenome.getText().toString();
         String cpfPassageiro = cpf.getText().toString();
@@ -40,10 +47,7 @@ public class CadastroPassageiro extends AppCompatActivity {
         String emailPassageiro = email.getText().toString();
         String senhaPassageiro = senha.getText().toString();
 
-        Toast.makeText(this,"Dados do passageiro: "
-                + nomePassageiro + ";" + sobrenomePassageiro + ";" + cpfPassageiro + ";" + telefonePassageiro + ";" + emailPassageiro + ";" + senhaPassageiro + ";",
-                Toast.LENGTH_SHORT).show();
-
+        //Cria um objeto passageiro
         Passageiro passageiro = new Passageiro();
         passageiro.setNome(nomePassageiro);
         passageiro.setSobrenome(sobrenomePassageiro);
@@ -52,30 +56,20 @@ public class CadastroPassageiro extends AppCompatActivity {
         passageiro.setTelefone(telefonePassageiro);
         passageiro.setSenha(senhaPassageiro);
 
-
-        System.out.println("Agora a String json");
-
+        //Converte o objeto Passageiro para Json
         Gson gson = new Gson();
         String jsonUsuario = gson.toJson(passageiro);
 
-        System.out.println(jsonUsuario);
-
-        System.out.println("Agora a de json para passageiro");
-        Gson gson1 = new Gson();
-        System.out.println("Esse do cadastro: " + jsonUsuario.toString());
-        JSONObject object = null;
-        try {
-            object = new JSONObject(jsonUsuario);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
         String r = "";
 
         try {
+            //Conecta com web service e passa o Json para ser tratado
+            //HttpServicePassageiro - classe que cria um thread para acessar o web service
             Passageiro retorno = new HttpServicePassageiro(jsonUsuario).execute().get();
             r = retorno.toString();
 
-            System.out.println("Retorno web service: " + r);
+            //Imprimi o saída do web service
+            System.out.println("Objeto retornado pelo web service: " + r.toString());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
