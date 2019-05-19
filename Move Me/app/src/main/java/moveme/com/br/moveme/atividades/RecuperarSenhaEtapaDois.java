@@ -1,3 +1,42 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package moveme.com.br.moveme.atividades;
 
 import android.content.Intent;
@@ -6,17 +45,18 @@ import android.os.Bundle;
 import android.view.View;
 
 import moveme.com.br.moveme.R;
+import moveme.com.br.moveme.atividades.EntrarPassageiro;
 
-public class TelaEntradaPassageiro extends AppCompatActivity {
+public class RecuperarSenhaEtapaDois extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_entrada_passageiro);
+        setContentView(R.layout.activity_recuperar_senha_etapa_dois);
     }
 
-    public void solicitarVeiculo(View v) {
-        Intent intent = new Intent(this, EscolherRestaurante.class);
+    public void senhaEnviada(View v){
+        Intent intent = new Intent(this, EntrarPassageiro.class);
         startActivity(intent);
     }
 }

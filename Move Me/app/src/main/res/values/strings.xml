@@ -19,4 +19,20 @@
     <string name="lbl_email_passageiro">E-mail</string>
     <string name="lbl_telefone_passageiro">Telefone</string>
     <string name="lbl_senha_passageiro">Senha</string>
+    <string name="lbl_esqueci_minha_senha_parte_1">Recuperar senha etapa 1</string>
+    <string name="lbl_digite_email">Digite o e-mail da conta</string>
+    <string name="lbl_buscar">Buscar</string>
+    <string name="lbl_local_recuperacao">Acessar e-mail da conta</string>
+    <string name="lbl_senha_enviada">Sua nova senha foi enviada</string>
+    <string name="lbl_resto_mensagem">para seu e-mail, verifique-o.</string>
+    <string name="lbl_bem_vindo_usuario">Bem-vindo</string>
+    <string name="lbl_sessao_transporte">Sessão transporte</string>
+    <string name="lbl_local_partida">Local de partida</string>
+    <string name="lbl_local_destino">Local de destino</string>
+    <string name="lbl_solicitarVeiculo">Solicitar veículo</string>
+    <string name="lbl_escolher_restaurante">Sessão alimentação</string>
+    <string name="lbl_o_que_comer">O que deseja comer?</string>
+    <string name="lbl_tempo_mensagem">Tempo estimado de viagem:</string>
+    <string name="lbl_guardar_nos_favoritos">Guardar nos favoritos?</string>
+    <string name="lbl_iniciar">Iniciar viagem</string>
 </resources>

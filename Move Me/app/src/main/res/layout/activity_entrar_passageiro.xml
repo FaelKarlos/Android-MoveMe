@@ -80,10 +80,10 @@
         android:layout_marginTop="16dp"
         android:text="@string/lbl_senha"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/edtUsuarioMotorista" />
 
     <EditText
-        android:id="@+id/edtUsuario"
+        android:id="@+id/edtUsuarioMotorista"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -98,7 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edtSenhaMotorista"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -122,10 +122,10 @@
         android:text="@string/lbl_esqueceu_senha"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSenhaMotorista" />
 
     <TextView
-        android:id="@+id/txtIrRedefinirSenhaPassageiro"
+        android:id="@+id/txtIrRedefinirSenhaMotorista"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -139,7 +139,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSenhaMotorista" />
 
     <Button
         android:id="@+id/btnEntrarUsuario"
@@ -154,7 +154,7 @@
         android:text="@string/lbl_acessar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtIrRedefinirSenhaPassageiro" />
+        app:layout_constraintTop_toBottomOf="@+id/txtIrRedefinirSenhaMotorista" />
 
     <TextView
         android:id="@+id/Moveme"

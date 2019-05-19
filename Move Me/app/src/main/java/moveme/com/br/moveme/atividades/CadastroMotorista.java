@@ -7,16 +7,16 @@ import android.view.View;
 
 import moveme.com.br.moveme.R;
 
-public class TelaEntradaPassageiro extends AppCompatActivity {
+public class CadastroMotorista extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_entrada_passageiro);
+        setContentView(R.layout.activity_cadastro_motorista);
     }
 
-    public void solicitarVeiculo(View v) {
-        Intent intent = new Intent(this, EscolherRestaurante.class);
+    public void cadastraMotorista(View v){
+        Intent intent = new Intent(this, EntrarMotorista.class);
         startActivity(intent);
     }
 }

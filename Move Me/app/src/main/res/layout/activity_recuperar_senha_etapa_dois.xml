@@ -10,24 +10,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".atividades.RedefinirSenhaPassageiro">
+        tools:context=".atividades.RecuperarSenhaEtapaDois">
 
         <TextView
-            android:id="@+id/txtRecuperarSenhaParte1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/lbl_esqueci_minha_senha_parte_1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/lbl_aviso_email"
+            android:id="@+id/txtEtapa2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -35,53 +21,52 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/lbl_digite_email"
+            android:text="@string/lbl_local_recuperacao"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtRecuperarSenhaParte1" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/txtSenhaEnviada"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/lbl_email_passageiro"
+            android:layout_marginTop="32dp"
+            android:text="@string/lbl_senha_enviada"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_aviso_email" />
+            app:layout_constraintTop_toBottomOf="@+id/txtEtapa2" />
 
-        <EditText
-            android:id="@+id/editText"
+        <TextView
+            android:id="@+id/txtRestoMensagem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name"
+            android:text="@string/lbl_resto_mensagem"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/txtSenhaEnviada" />
 
         <Button
-            android:id="@+id/btnBuscarEmail"
+            android:id="@+id/btnOK"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
+            android:onClick="senhaEnviada"
             android:layout_marginTop="8dp"
-            android:onClick="buscarEmail"
-            android:text="@string/lbl_buscar"
+            android:text="@android:string/VideoView_error_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/txtRestoMensagem" />
+
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

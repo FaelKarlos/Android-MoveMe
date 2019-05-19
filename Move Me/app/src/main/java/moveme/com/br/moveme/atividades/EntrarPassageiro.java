@@ -28,7 +28,7 @@ public class EntrarPassageiro extends AppCompatActivity {
         } else if(id == R.id.txtCadastre_se){
             Intent it = new Intent(this, CadastroPassageiro.class);
             startActivity(it);
-        } else if(id == R.id.txtIrRedefinirSenhaPassageiro){
+        } else if(id == R.id.txtIrRedefinirSenhaMotorista){
             Intent it = new Intent(this, RedefinirSenhaPassageiro.class);
             startActivity(it);
         }

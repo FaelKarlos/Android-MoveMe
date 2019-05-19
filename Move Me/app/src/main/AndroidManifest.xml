@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="moveme.com.br.moveme">
-
     //Permissão para o aplicativo acessar a internet para consumir os serviços web
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -24,6 +23,10 @@
         <activity android:name=".atividades.TelaEntradaPassageiro" />
         <activity android:name=".atividades.CadastroPassageiro" />
         <activity android:name=".atividades.RedefinirSenhaPassageiro" />
+        <activity android:name=".atividades.TelaEntradaMotorista" />
+        <activity android:name=".atividades.CadastroMotorista" />
+        <activity android:name=".atividades.RecuperarSenhaEtapaDois" />
+        <activity android:name=".atividades.EscolherRestaurante"></activity>
     </application>
 
 </manifest>
