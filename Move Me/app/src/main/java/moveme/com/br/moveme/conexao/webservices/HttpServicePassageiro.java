@@ -44,7 +44,7 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
         //Conexão com o web service
         try {
             //Localização do web service
-            URL url = new URL("http://192.168.1.12:8080/MoveMe/rest/cadastropassageiro/inserirpassageiro");
+            URL url = new URL("http://192.168.43.155:8080/MoveMe/rest/cadastropassageiro/inserirpassageiro");
 
             //Abre a conexão
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
