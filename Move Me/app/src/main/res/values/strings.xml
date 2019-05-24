@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Move Me</string>
     <string name="lbl_move_me">Move Me</string>
-    <string name="lbl_bem_vindo">Bem-vindo ao Move Me Karol</string>
+    <string name="lbl_bem_vindo">Bem-vindo ao Move</string>
     <string name="lbl_voce_e">Acessar como?</string>
     <string name="btn_motorista">Motorista</string>
     <string name="btn_passageiro">Passageiro Karol</string>
