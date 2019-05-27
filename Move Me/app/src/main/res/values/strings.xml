@@ -35,4 +35,5 @@
     <string name="lbl_tempo_mensagem">Tempo estimado de viagem:</string>
     <string name="lbl_guardar_nos_favoritos">Guardar nos favoritos?</string>
     <string name="lbl_iniciar">Iniciar viagem</string>
+    <string name="title_activity_karol">Karol</string>
 </resources>
