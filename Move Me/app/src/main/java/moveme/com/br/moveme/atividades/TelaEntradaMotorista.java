@@ -1,15 +1,15 @@
-package moveme.com.br.moveme;
+package moveme.com.br.moveme.atividades;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import moveme.com.br.moveme.R;
+
+public class TelaEntradaMotorista extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //Alteracao realizada por Otávio Murilo da Paz
+        setContentView(R.layout.activity_tela_entrada_motorista);
     }
 }

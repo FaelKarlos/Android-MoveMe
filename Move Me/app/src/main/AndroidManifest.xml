@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="moveme.com.br.moveme">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +11,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".Karol"
+            android:label="@string/title_activity_karol"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".atividades.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".atividades.EntrarPassageiro" />
+        <activity android:name=".atividades.EntrarMotorista" />
+        <activity android:name=".atividades.TelaEntradaPassageiro" />
+        <activity android:name=".atividades.CadastroPassageiro" />
+        <activity android:name=".atividades.RedefinirSenhaPassageiro" />
+        <activity android:name=".atividades.TelaEntradaMotorista" />
+        <activity android:name=".atividades.CadastroMotorista" />
+        <activity android:name=".atividades.RecuperarSenhaEtapaDois" />
+        <activity android:name=".atividades.EscolherRestaurante" />
     </application>
 
 </manifest>
