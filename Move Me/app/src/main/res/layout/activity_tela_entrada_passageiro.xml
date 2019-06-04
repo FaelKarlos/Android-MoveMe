@@ -136,4 +136,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSolicitaVeiculo"
         app:srcCompat="@drawable/mapa" />
+
+    <Button
+        android:id="@+id/btnApagarConta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="opcoes"
+        android:text="Apagar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnSolicitaVeiculo"
+        app:layout_constraintTop_toTopOf="@+id/btnSolicitaVeiculo" />
+
+    <Button
+        android:id="@+id/btnEditarPassageiro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="opcoes"
+        android:text="Editar"
+        app:layout_constraintEnd_toStartOf="@+id/btnSolicitaVeiculo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtLocalDestino" />
+
 </android.support.constraint.ConstraintLayout>

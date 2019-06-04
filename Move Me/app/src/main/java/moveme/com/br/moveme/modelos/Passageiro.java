@@ -1,6 +1,8 @@
 package moveme.com.br.moveme.modelos;
 
-public class Passageiro {
+import java.io.Serializable;
+
+public class Passageiro implements Serializable {
     private String cpf;
     private String nome;
     private String email;

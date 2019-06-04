@@ -27,6 +27,7 @@
         <activity android:name=".atividades.CadastroMotorista" />
         <activity android:name=".atividades.RecuperarSenhaEtapaDois" />
         <activity android:name=".atividades.EscolherRestaurante" />
+        <activity android:name=".atividades.EditarContaPassageiro"></activity>
     </application>
 
 </manifest>

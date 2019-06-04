@@ -68,6 +68,9 @@ public class EntrarPassageiro extends AppCompatActivity {
 
                         Intent it = new Intent(this, TelaEntradaPassageiro.class);
 
+                        //Adicionando o objeto Experimento ao bundle
+                        it.putExtra("DADOS_USUARIO", retorno);
+
                         it.putExtra("USUARIO", retorno.getNome());
                         startActivity(it);
                     } else{
