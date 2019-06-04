@@ -50,7 +50,6 @@ public class CadastroPassageiro extends AppCompatActivity {
         //Cria um objeto passageiro
         Passageiro passageiro = new Passageiro();
         passageiro.setNome(nomePassageiro);
-        passageiro.setSobrenome(sobrenomePassageiro);
         passageiro.setCpf(cpfPassageiro);
         passageiro.setEmail(emailPassageiro);
         passageiro.setTelefone(telefonePassageiro);
