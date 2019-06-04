@@ -1,36 +1,17 @@
 package moveme.com.br.moveme.modelos;
 
 public class Passageiro {
-    private Integer id;
-    private String nome;
-    private String sobrenome;
     private String cpf;
+    private String nome;
     private String email;
-    private String telefone;
     private String senha;
+    private String telefone;
 
-    public Integer getId() {
-        return id;
+    public Passageiro() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public Passageiro(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getCpf() {
@@ -41,20 +22,20 @@ public class Passageiro {
         this.cpf = cpf;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 
     public String getSenha() {
@@ -65,16 +46,22 @@ public class Passageiro {
         this.senha = senha;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     @Override
     public String toString() {
         return "Passageiro{" +
-                "id=" + id +
+                "cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
-                ", sobrenome='" + sobrenome + '\'' +
-                ", cpf='" + cpf + '\'' +
                 ", email='" + email + '\'' +
-                ", telefone='" + telefone + '\'' +
                 ", senha='" + senha + '\'' +
+                ", telefone='" + telefone + '\'' +
                 '}';
     }
 }

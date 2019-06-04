@@ -61,11 +61,12 @@ public class CadastroPassageiro extends AppCompatActivity {
         String jsonUsuario = gson.toJson(passageiro);
 
         String r = "";
+        String operacao = "inserir";
 
         try {
             //Conecta com web service e passa o Json para ser tratado
             //HttpServicePassageiro - classe que cria um thread para acessar o web service
-            Passageiro retorno = new HttpServicePassageiro(jsonUsuario).execute().get();
+            Passageiro retorno = new HttpServicePassageiro(jsonUsuario, operacao).execute().get();
             r = retorno.toString();
 
             //Imprimi o saída do web service
