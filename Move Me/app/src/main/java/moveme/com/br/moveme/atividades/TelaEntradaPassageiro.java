@@ -35,8 +35,16 @@ public class TelaEntradaPassageiro extends AppCompatActivity {
         //
 
         usuario.setText(passageiroBundle.getNome());
-    }
 
+
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
     public void solicitarVeiculo(View v) {
         Intent intent = new Intent(this, EscolherRestaurante.class);
         startActivity(intent);

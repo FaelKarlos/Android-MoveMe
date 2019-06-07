@@ -28,6 +28,10 @@
         <activity android:name=".atividades.RecuperarSenhaEtapaDois" />
         <activity android:name=".atividades.EscolherRestaurante" />
         <activity android:name=".atividades.EditarContaPassageiro"></activity>
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".atividades.MainActivity" />
     </application>
 
 </manifest>

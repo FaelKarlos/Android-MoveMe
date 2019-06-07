@@ -41,6 +41,14 @@ public class EditarContaPassageiro extends AppCompatActivity {
         email.setText(passageiroBundle.getEmail());
         telefone.setText(passageiroBundle.getTelefone());
         senha.setText(passageiroBundle.getSenha());
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     public void alterarConta(View v){
