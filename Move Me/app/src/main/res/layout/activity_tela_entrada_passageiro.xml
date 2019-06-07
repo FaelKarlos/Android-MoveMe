@@ -16,6 +16,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/lbl_bem_vindo_usuario"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.422"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,12 +24,14 @@
 
     <TextView
         android:id="@+id/txtUsuario"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="4dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
-        android:text="Nome do usuario"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toEndOf="@+id/txtBemVindo"
@@ -58,7 +61,6 @@
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLocalPartida" />
@@ -74,7 +76,6 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLocalDestino" />
@@ -135,4 +136,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSolicitaVeiculo"
         app:srcCompat="@drawable/mapa" />
+
+    <Button
+        android:id="@+id/btnApagarConta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="opcoes"
+        android:text="Apagar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnSolicitaVeiculo"
+        app:layout_constraintTop_toTopOf="@+id/btnSolicitaVeiculo" />
+
+    <Button
+        android:id="@+id/btnEditarPassageiro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="opcoes"
+        android:text="Editar"
+        app:layout_constraintEnd_toStartOf="@+id/btnSolicitaVeiculo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtLocalDestino" />
+
 </android.support.constraint.ConstraintLayout>
