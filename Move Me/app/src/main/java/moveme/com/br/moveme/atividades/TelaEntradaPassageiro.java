@@ -13,6 +13,7 @@ import java.util.concurrent.ExecutionException;
 
 import moveme.com.br.moveme.R;
 import moveme.com.br.moveme.conexao.webservices.HttpServicePassageiro;
+import moveme.com.br.moveme.maps.CustomerMapActivity;
 import moveme.com.br.moveme.modelos.Passageiro;
 
 public class TelaEntradaPassageiro extends AppCompatActivity {
@@ -46,7 +47,7 @@ public class TelaEntradaPassageiro extends AppCompatActivity {
         return true;
     }
     public void solicitarVeiculo(View v) {
-        Intent intent = new Intent(this, EscolherRestaurante.class);
+        Intent intent = new Intent(this, CustomerMapActivity.class);
         startActivity(intent);
     }
 

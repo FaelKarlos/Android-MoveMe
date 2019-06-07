@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import moveme.com.br.moveme.R;
+import moveme.com.br.moveme.maps.CustomerLoginActivity;
+import moveme.com.br.moveme.maps.DriverLoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
         int id = v.getId();
 
         if (id == R.id.btnPassageiro){
-            Intent it = new Intent(this, EntrarPassageiro.class);
+            Intent it = new Intent(this, CustomerLoginActivity.class);
 
             startActivity(it);
         } else{
-            Intent it = new Intent(this, EntrarMotorista.class);
+            Intent it = new Intent(this, DriverLoginActivity.class);
 
             startActivity(it);
         }

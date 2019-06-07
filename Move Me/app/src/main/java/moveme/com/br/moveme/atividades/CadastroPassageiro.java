@@ -72,12 +72,16 @@ public class CadastroPassageiro extends AppCompatActivity {
             //HttpServicePassageiro - classe que cria um thread para acessar o web service
             Passageiro retorno = new HttpServicePassageiro(jsonUsuario, operacao).execute().get();
             r = retorno.toString();
+            if(r != null) {
+                //Imprimi o saída do web service
+                System.out.println("Objeto retornado pelo web service: " + r.toString());
 
-            //Imprimi o saída do web service
-            System.out.println("Objeto retornado pelo web service: " + r.toString());
-
-            Intent intent = new Intent(this, EntrarPassageiro.class);
-            startActivity(intent);
+                Intent intent = new Intent(this, EntrarPassageiro.class);
+                startActivity(intent);
+            }
+            else{
+                Toast.makeText(this, "Erro ao cadastrar!", Toast.LENGTH_SHORT).show();
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
