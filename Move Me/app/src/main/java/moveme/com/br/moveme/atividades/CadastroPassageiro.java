@@ -1,16 +1,14 @@
 package moveme.com.br.moveme.atividades;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
@@ -34,8 +32,15 @@ public class CadastroPassageiro extends AppCompatActivity {
         email = (EditText) findViewById(R.id.edtEmail);
         telefone = (EditText) findViewById(R.id.edtTelefone);
         senha = (EditText) findViewById(R.id.edtSenha);
-    }
 
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
     //Metodo para cadastrar o passageiro
     public void cadastrarPassgairo(View v){
 
@@ -67,13 +72,21 @@ public class CadastroPassageiro extends AppCompatActivity {
             //HttpServicePassageiro - classe que cria um thread para acessar o web service
             Passageiro retorno = new HttpServicePassageiro(jsonUsuario, operacao).execute().get();
             r = retorno.toString();
+            if(r != null) {
+                //Imprimi o saída do web service
+                System.out.println("Objeto retornado pelo web service: " + r.toString());
 
-            //Imprimi o saída do web service
-            System.out.println("Objeto retornado pelo web service: " + r.toString());
+                Intent intent = new Intent(this, EntrarPassageiro.class);
+                startActivity(intent);
+            }
+            else{
+                Toast.makeText(this, "Erro ao cadastrar!", Toast.LENGTH_SHORT).show();
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
+            Toast.makeText(this, "Erro ao cadastrar!", Toast.LENGTH_SHORT).show();
         }
     }
 }

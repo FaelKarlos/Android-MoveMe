@@ -29,6 +29,14 @@ public class EntrarPassageiro extends AppCompatActivity {
         senha = (EditText) findViewById(R.id.edtSenhaPassageiro);
 
         btnAcessar = (Button) findViewById(R.id.btnEntrarUsuario);
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     public void entrar(View v){

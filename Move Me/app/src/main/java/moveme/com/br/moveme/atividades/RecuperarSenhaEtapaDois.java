@@ -1,52 +1,14 @@
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 package moveme.com.br.moveme.atividades;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
 import moveme.com.br.moveme.R;
-import moveme.com.br.moveme.atividades.EntrarPassageiro;
 
 public class RecuperarSenhaEtapaDois extends AppCompatActivity {
     private EditText nome, cpf, telefone, email, senha;
@@ -56,6 +18,7 @@ public class RecuperarSenhaEtapaDois extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperar_senha_etapa_dois);
+
         nome = (EditText) findViewById(R.id.edtNome);
         email = (EditText) findViewById(R.id.edtEmail);
         senha = (EditText) findViewById(R.id.edtSenha);
@@ -73,6 +36,14 @@ public class RecuperarSenhaEtapaDois extends AppCompatActivity {
         }
     }
 
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
     public void senhaEnviada(View v){
 
 
