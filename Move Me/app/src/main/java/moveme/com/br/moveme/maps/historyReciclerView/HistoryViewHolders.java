@@ -9,9 +9,6 @@ import android.widget.TextView;
 import moveme.com.br.moveme.R;
 import moveme.com.br.moveme.maps.HistorySingleActivity;
 
-/**
- * Created by manel on 10/10/2017.
- */
 
 public class HistoryViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener{
 

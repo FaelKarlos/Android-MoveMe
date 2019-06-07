@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,9 +32,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_login);
 
-        assert getSupportActionBar() != null;   //null check
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         mAuth = FirebaseAuth.getInstance();
 
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -56,10 +54,14 @@ public class CustomerLoginActivity extends AppCompatActivity {
         mRegistration = (Button) findViewById(R.id.registration);
 
         mRegistration.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
+                if (!validateForm()) {
+                    return;
+                }
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(CustomerLoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -75,11 +77,15 @@ public class CustomerLoginActivity extends AppCompatActivity {
             }
         });
 
+        final String email = mEmail.getText().toString();
+        final String password = mPassword.getText().toString();
+
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = mEmail.getText().toString();
-                final String password = mPassword.getText().toString();
+                if (!validateForm()) {
+                    return;
+                }
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(CustomerLoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -93,12 +99,29 @@ public class CustomerLoginActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
-    }
 
+    
+    private boolean validateForm() {
+        boolean valid = true;
+
+        String email = mEmail.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            mEmail.setError("O campo de email está vazio!");
+            valid = false;
+        } else {
+            mEmail.setError(null);
+        }
+
+        String password = mPassword.getText().toString();
+        if (TextUtils.isEmpty(password)) {
+            mPassword.setError("Coloque uma senha.");
+            valid = false;
+        } else {
+            mPassword.setError(null);
+        }
+
+        return valid;
+    }
 
     @Override
     protected void onStart() {
