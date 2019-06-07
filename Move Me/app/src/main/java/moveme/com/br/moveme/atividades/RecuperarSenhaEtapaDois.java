@@ -28,17 +28,17 @@ public class RecuperarSenhaEtapaDois extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         emailPassageiro = (String) intent.getSerializableExtra("DADOS_USUARIO");
 
-        if(emailPassageiro == )
+        if(emailPassageiro == "")
         {
 
-            nome.setText();
-            email.setText();
+            //nome.setText();
+            //email.setText();
         }
     }
 
-        assert getSupportActionBar() != null;   //null check
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
+      //  assert getSupportActionBar() != null;   //null check
+    //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    
     @Override
     public boolean onSupportNavigateUp(){
         finish();
