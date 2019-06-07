@@ -8,16 +8,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+
+import java.util.concurrent.ExecutionException;
+
 import moveme.com.br.moveme.R;
+import moveme.com.br.moveme.conexao.webservices.HttpServicePassageiro;
+import moveme.com.br.moveme.modelos.Passageiro;
 
 public class RecuperarSenhaEtapaDois extends AppCompatActivity {
-    private EditText nome, cpf, telefone, email, senha;
-    String emailPassageiro;
+    private EditText nome, email, senha;
+    private Passageiro passageiroBundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperar_senha_etapa_dois);
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         nome = (EditText) findViewById(R.id.edtNome);
         email = (EditText) findViewById(R.id.edtEmail);
@@ -26,19 +34,16 @@ public class RecuperarSenhaEtapaDois extends AppCompatActivity {
         //Pegando email para comparar
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        emailPassageiro = (String) intent.getSerializableExtra("DADOS_USUARIO");
+        passageiroBundle = (Passageiro) intent.getSerializableExtra("DADOS_USUARIO");
 
-        if(emailPassageiro == "")
-        {
 
-            //nome.setText();
-            //email.setText();
-        }
+        nome.setText(passageiroBundle.getNome());
+        email.setText(passageiroBundle.getEmail());
+
     }
 
-      //  assert getSupportActionBar() != null;   //null check
-    //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    
+
+
     @Override
     public boolean onSupportNavigateUp(){
         finish();
@@ -46,8 +51,10 @@ public class RecuperarSenhaEtapaDois extends AppCompatActivity {
     }
     public void senhaEnviada(View v){
 
-
         Intent intent = new Intent(this, EntrarPassageiro.class);
+
+
+
         startActivity(intent);
     }
 }
