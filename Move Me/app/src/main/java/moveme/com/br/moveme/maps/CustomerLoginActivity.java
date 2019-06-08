@@ -15,10 +15,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import moveme.com.br.moveme.R;
+import moveme.com.br.moveme.atividades.CadastroPassageiro;
+import moveme.com.br.moveme.atividades.RedefinirSenhaPassageiro;
 
 public class CustomerLoginActivity extends AppCompatActivity {
 
@@ -40,9 +40,9 @@ public class CustomerLoginActivity extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
                     Intent intent = new Intent(CustomerLoginActivity.this, CustomerMapActivity.class);
+                    //
                     startActivity(intent);
                     finish();
-                    return;
                 }
             }
         };
@@ -50,7 +50,8 @@ public class CustomerLoginActivity extends AppCompatActivity {
         mEmail = (EditText) findViewById(R.id.edtUsuarioMotorista);
         mPassword = (EditText) findViewById(R.id.edtSenhaPassageiro);
 
-        mLogin = (Button) findViewById(R.id.login);
+        mLogin = (Button) findViewById(R.id.btnEntrarMotorista);
+        /*
         mRegistration = (Button) findViewById(R.id.registration);
 
         mRegistration.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +77,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
                 });
             }
         });
-
+*/
         final String email = mEmail.getText().toString();
         final String password = mPassword.getText().toString();
 
@@ -114,7 +115,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
 
         String password = mPassword.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            mPassword.setError("Coloque uma senha.");
+            mPassword.setError("O campo de senha está vazio!");
             valid = false;
         } else {
             mPassword.setError(null);
@@ -132,5 +133,14 @@ public class CustomerLoginActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mAuth.removeAuthStateListener(firebaseAuthListener);
+    }
+
+    public void cadastrar(View v){
+        Intent cadastrar = new Intent(this, CadastroPassageiro.class);
+        startActivity(cadastrar);
+    }
+    public void recuperarSenha(View v){
+        Intent recuperaSenha = new Intent(this, RedefinirSenhaPassageiro.class);
+        startActivity(recuperaSenha);
     }
 }
