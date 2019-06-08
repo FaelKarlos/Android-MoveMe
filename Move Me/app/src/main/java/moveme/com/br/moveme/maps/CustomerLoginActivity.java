@@ -121,4 +121,5 @@ public class CustomerLoginActivity extends AppCompatActivity {
         Intent recuperaSenha = new Intent(this, RedefinirSenhaPassageiro.class);
         startActivity(recuperaSenha);
     }
+
 }
