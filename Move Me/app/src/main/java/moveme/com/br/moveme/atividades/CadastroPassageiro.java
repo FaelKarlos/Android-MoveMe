@@ -72,8 +72,7 @@ public class CadastroPassageiro extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                final String mail = email.getText().toString();
-                final String password = senha.getText().toString();
+
                 if (!validateForm()) {
                     return;
                 }
@@ -83,9 +82,8 @@ public class CadastroPassageiro extends AppCompatActivity {
                 String sobrenomePassageiro = sobrenome.getText().toString();
                 String cpfPassageiro = cpf.getText().toString();
                 String telefonePassageiro = telefone.getText().toString();
-                String emailPassageiro = mail;
-                String senhaPassageiro = password;
-
+                String emailPassageiro = email.getText().toString();;
+                String senhaPassageiro = senha.getText().toString();
 
                 //Cria um objeto passageiro
                 Passageiro passageiro = new Passageiro();
@@ -115,22 +113,21 @@ public class CadastroPassageiro extends AppCompatActivity {
                 }
 
 
-                mAuth.createUserWithEmailAndPassword(mail, password).addOnCompleteListener(CadastroPassageiro.this, new OnCompleteListener<AuthResult>() {
+                mAuth.createUserWithEmailAndPassword(emailPassageiro, senhaPassageiro).addOnCompleteListener(CadastroPassageiro.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
-                            Toast.makeText(CadastroPassageiro.this, "Usuário já cadastrado!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CadastroPassageiro.this, "Erro de Login", Toast.LENGTH_SHORT).show();
                         } else {
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
                             Toast.makeText(CadastroPassageiro.this, "Cadastro efetuado com sucesso (FIREBASE)!", Toast.LENGTH_SHORT).show();
                             current_user_db.setValue(true);
+                            Toast.makeText(CadastroPassageiro.this, "Erro de Login", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
             }
-
-
         });
     }
 
@@ -161,4 +158,15 @@ public class CadastroPassageiro extends AppCompatActivity {
 
         return valid;
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(firebaseAuthListener);
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mAuth.removeAuthStateListener(firebaseAuthListener);
+    }
 }
+
