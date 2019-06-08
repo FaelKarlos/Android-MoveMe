@@ -120,6 +120,7 @@ public class CadastroPassageiro extends AppCompatActivity {
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
                             current_user_db.setValue(true);
+                            Toast.makeText(CadastroPassageiro.this, "Erro de Login", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -154,4 +155,15 @@ public class CadastroPassageiro extends AppCompatActivity {
 
         return valid;
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(firebaseAuthListener);
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mAuth.removeAuthStateListener(firebaseAuthListener);
+    }
 }
+
