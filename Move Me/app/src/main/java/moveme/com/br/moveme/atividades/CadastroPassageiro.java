@@ -29,7 +29,7 @@ import moveme.com.br.moveme.modelos.Passageiro;
 public class CadastroPassageiro extends AppCompatActivity {
 
     private EditText nome, sobrenome, cpf, email, telefone, senha;
-    private Button  mRegistration;
+    private Button mRegistration;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
@@ -53,12 +53,12 @@ public class CadastroPassageiro extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if(user!=null){
+                if (user != null) {
                     Intent intent = new Intent(CadastroPassageiro.this, CustomerLoginActivity.class);
                     //
                     startActivity(intent);
                     finish();
-                }else{
+                } else {
                     System.out.println("Erro!");
                 }
             }
@@ -68,6 +68,8 @@ public class CadastroPassageiro extends AppCompatActivity {
         mRegistration = (Button) findViewById(R.id.btnCadastroPassageiro);
 
         mRegistration.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
                 final String mail = email.getText().toString();
@@ -104,7 +106,7 @@ public class CadastroPassageiro extends AppCompatActivity {
                     //Conecta com web service e passa o Json para ser tratado
                     //HttpServicePassageiro - classe que cria um thread para acessar o web service
                     Passageiro retorno = new HttpServicePassageiro(jsonUsuario, operacao).execute().get();
-                    r= retorno.toString();
+                    r = retorno.toString();
                     System.out.println(r);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -113,16 +115,15 @@ public class CadastroPassageiro extends AppCompatActivity {
                 }
 
 
-
-
                 mAuth.createUserWithEmailAndPassword(mail, password).addOnCompleteListener(CadastroPassageiro.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
-                            Toast.makeText(CadastroPassageiro.this, "sign up error", Toast.LENGTH_SHORT).show();
-                        }else{
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(CadastroPassageiro.this, "Usuário já cadastrado!", Toast.LENGTH_SHORT).show();
+                        } else {
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
+                            Toast.makeText(CadastroPassageiro.this, "Cadastro efetuado com sucesso (FIREBASE)!", Toast.LENGTH_SHORT).show();
                             current_user_db.setValue(true);
                         }
                     }
@@ -130,13 +131,11 @@ public class CadastroPassageiro extends AppCompatActivity {
             }
 
 
-
-
         });
     }
 
     @Override
-    public boolean onSupportNavigateUp(){
+    public boolean onSupportNavigateUp() {
         finish();
         return true;
     }
