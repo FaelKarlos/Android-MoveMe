@@ -40,65 +40,65 @@ public class EntrarPassageiro extends AppCompatActivity {
     }
 
     public void entrar(View v){
-        int id = v.getId();
+            int id = v.getId();
 
-        if (id == R.id.btnEntrarUsuario){
+            if (id == R.id.btnEntrarUsuario){
 
-            //Login usuario
-            {
-                //Pega os valores dos EditText
-                String cpfPassageiro = usuario.getText().toString();
-                String senhaPassageiro = senha.getText().toString();
+                //Login usuario
+                {
+                    //Pega os valores dos EditText
+                    String cpfPassageiro = usuario.getText().toString();
+                    String senhaPassageiro = senha.getText().toString();
 
-                //Cria um objeto passageiro
-                Passageiro passageiro = new Passageiro();
-                passageiro.setCpf(cpfPassageiro);
-                passageiro.setSenha(senhaPassageiro);
+                    //Cria um objeto passageiro
+                    Passageiro passageiro = new Passageiro();
+                    passageiro.setCpf(cpfPassageiro);
+                    passageiro.setSenha(senhaPassageiro);
 
-                //Converte o objeto Passageiro para Json
-                Gson gson = new Gson();
-                String jsonUsuario = gson.toJson(passageiro);
+                    //Converte o objeto Passageiro para Json
+                    Gson gson = new Gson();
+                    String jsonUsuario = gson.toJson(passageiro);
 
-                String r = "";
-                String operacao = "login";
+                    String r = "";
+                    String operacao = "login";
 
-                try {
-                    //Conecta com web service e passa o Json para ser tratado
-                    //HttpServicePassageiro - classe que cria um thread para acessar o web service
-                    Passageiro retorno = new HttpServicePassageiro(jsonUsuario, operacao).execute().get();
-                    r = retorno.toString();
+                    try {
+                        //Conecta com web service e passa o Json para ser tratado
+                        //HttpServicePassageiro - classe que cria um thread para acessar o web service
+                        Passageiro retorno = new HttpServicePassageiro(jsonUsuario, operacao).execute().get();
+                        r = retorno.toString();
 
-                    //Imprimi o saída do web service
-                    System.out.println("Vai entrar agora: " + r.toString());
-                    if (retorno != null){
+                        //Imprimi o saída do web service
+                        System.out.println("Vai entrar agora: " + r.toString());
+                        if (retorno != null){
 
-                        Toast.makeText(this, "Logado com sucesso!!!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Logado com sucesso!!!", Toast.LENGTH_SHORT).show();
 
-                        Intent it = new Intent(this, TelaEntradaPassageiro.class);
+                            Intent it = new Intent(this, TelaEntradaPassageiro.class);
 
-                        //Adicionando o objeto Experimento ao bundle
-                        it.putExtra("DADOS_USUARIO", retorno);
+                            //Adicionando o objeto Experimento ao bundle
+                            it.putExtra("DADOS_USUARIO", retorno);
 
-                        it.putExtra("USUARIO", retorno.getNome());
-                        startActivity(it);
-                    } else{
-                        Toast.makeText(this, "Usuário não encontrado!!!", Toast.LENGTH_LONG).show();
+                            it.putExtra("USUARIO", retorno.getNome());
+                            startActivity(it);
+                        } else{
+                            Toast.makeText(this, "Usuário não encontrado!!!", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
                     }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
+
                 }
 
+
+            } else if(id == R.id.txtCadastre_se){
+                Intent it = new Intent(this, CadastroPassageiro.class);
+                startActivity(it);
+            } else if(id == R.id.txtIrRedefinirSenhaMotorista){
+                Intent it = new Intent(this, RedefinirSenhaPassageiro.class);
+                startActivity(it);
             }
-
-
-        } else if(id == R.id.txtCadastre_se){
-            Intent it = new Intent(this, CadastroPassageiro.class);
-            startActivity(it);
-        } else if(id == R.id.txtIrRedefinirSenhaMotorista){
-            Intent it = new Intent(this, RedefinirSenhaPassageiro.class);
-            startActivity(it);
-        }
     }
 }

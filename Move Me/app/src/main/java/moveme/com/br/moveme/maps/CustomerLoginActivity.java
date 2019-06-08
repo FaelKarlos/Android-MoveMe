@@ -17,20 +17,37 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
+
+import java.util.concurrent.ExecutionException;
 
 import moveme.com.br.moveme.R;
+import moveme.com.br.moveme.atividades.CadastroPassageiro;
+import moveme.com.br.moveme.atividades.RedefinirSenhaPassageiro;
+import moveme.com.br.moveme.atividades.TelaEntradaPassageiro;
+import moveme.com.br.moveme.conexao.webservices.HttpServicePassageiro;
+import moveme.com.br.moveme.modelos.Passageiro;
 
 public class CustomerLoginActivity extends AppCompatActivity {
 
-    private EditText mEmail, mPassword;
-    private Button mLogin, mRegistration;
+    private EditText usuario, senha;
+    private Button btnAcessar;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrar_passageiro);
+
+
+        usuario = (EditText) findViewById(R.id.edtUsuarioMotorista);
+        senha = (EditText) findViewById(R.id.edtSenhaPassageiro);
+
+        btnAcessar = (Button) findViewById(R.id.btnEntrarUsuario);
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -38,7 +55,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if(user!=null){
+                if (user != null) {
                     Intent intent = new Intent(CustomerLoginActivity.this, CustomerMapActivity.class);
                     startActivity(intent);
                     finish();
@@ -46,19 +63,94 @@ public class CustomerLoginActivity extends AppCompatActivity {
                 }
             }
         };
+    }
 
-        mEmail = (EditText) findViewById(R.id.edtUsuarioMotorista);
-        mPassword = (EditText) findViewById(R.id.edtSenhaPassageiro);
+    public void entrar(View v) {
+        int id = v.getId();
 
-        mLogin = (Button) findViewById(R.id.login);
-        mRegistration = (Button) findViewById(R.id.registration);
+        if (id == R.id.btnEntrarUsuario) {
 
-        mRegistration.setOnClickListener(new View.OnClickListener() {
 
+                //Pega os valores dos EditText
+                String cpfPassageiro = usuario.getText().toString();
+                String senhaPassageiro = senha.getText().toString();
+
+                //Cria um objeto passageiro
+                Passageiro passageiro = new Passageiro();
+                passageiro.setCpf(cpfPassageiro);
+                passageiro.setSenha(senhaPassageiro);
+
+                //Converte o objeto Passageiro para Json
+                Gson gson = new Gson();
+                String jsonUsuario = gson.toJson(passageiro);
+
+                String r = "";
+                String operacao = "login";
+
+                try {
+                    //Conecta com web service e passa o Json para ser tratado
+                    //HttpServicePassageiro - classe que cria um thread para acessar o web service
+                    Passageiro retorno = new HttpServicePassageiro(jsonUsuario, operacao).execute().get();
+                    r = retorno.toString();
+
+                    //Imprimi o saída do web service
+                    System.out.println("Vai entrar agora: " + r.toString());
+                    if (retorno != null) {
+
+                        Toast.makeText(this, "Logado com sucesso!!!", Toast.LENGTH_SHORT).show();
+
+                        Intent it = new Intent(this, TelaEntradaPassageiro.class);
+
+                        //Adicionando o objeto Experimento ao bundle
+                        it.putExtra("DADOS_USUARIO", retorno);
+
+                        it.putExtra("USUARIO", retorno.getNome());
+                        startActivity(it);
+                    } else {
+                        Toast.makeText(this, "Usuário não encontrado!!!", Toast.LENGTH_LONG).show();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+        } else if (id == R.id.txtCadastre_se) {
+            Intent it = new Intent(this, CadastroPassageiro.class);
+            startActivity(it);
+        } else if (id == R.id.txtIrRedefinirSenhaMotorista) {
+            Intent it = new Intent(this, RedefinirSenhaPassageiro.class);
+            startActivity(it);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+
+            //Registrar
             @Override
             public void onClick(View v) {
-                final String email = mEmail.getText().toString();
-                final String password = mPassword.getText().toString();
+                final String email = usuario.getText().toString();
+                final String password = senha.getText().toString();
                 if (!validateForm()) {
                     return;
                 }
@@ -77,8 +169,8 @@ public class CustomerLoginActivity extends AppCompatActivity {
             }
         });
 
-        final String email = mEmail.getText().toString();
-        final String password = mPassword.getText().toString();
+        final String email = usuario.getText().toString();
+        final String password = senha.getText().toString();
 
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,26 +190,31 @@ public class CustomerLoginActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
 
 
     
     private boolean validateForm() {
         boolean valid = true;
 
-        String email = mEmail.getText().toString();
+        String email = usuario.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            mEmail.setError("O campo de email está vazio!");
+            usuario.setError("O campo de email está vazio!");
             valid = false;
         } else {
-            mEmail.setError(null);
+            usuario.setError(null);
         }
 
-        String password = mPassword.getText().toString();
+        String password = senha.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            mPassword.setError("Coloque uma senha.");
+            senha.setError("Coloque uma senha.");
             valid = false;
         } else {
-            mPassword.setError(null);
+            senha.setError(null);
         }
 
         return valid;
@@ -132,5 +229,5 @@ public class CustomerLoginActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mAuth.removeAuthStateListener(firebaseAuthListener);
-    }
+    }*/
 }
