@@ -22,8 +22,8 @@ import moveme.com.br.moveme.atividades.RedefinirSenhaPassageiro;
 
 public class CustomerLoginActivity extends AppCompatActivity {
 
-    private EditText mEmail, mPassword;
-    private Button mLogin, mRegistration;
+    public EditText mEmail, mPassword;
+    public Button mLogin;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
@@ -43,14 +43,16 @@ public class CustomerLoginActivity extends AppCompatActivity {
                     //
                     startActivity(intent);
                     finish();
+                }else{
+                    System.out.println("Erro da disgraça.");
                 }
             }
         };
 
-        mEmail = (EditText) findViewById(R.id.edtUsuarioMotorista);
+        mEmail = (EditText) findViewById(R.id.edtPassageiro);
         mPassword = (EditText) findViewById(R.id.edtSenhaPassageiro);
 
-        mLogin = (Button) findViewById(R.id.btnEntrarMotorista);
+        mLogin = findViewById(R.id.btnEntrarUsuario);
         /*
         mRegistration = (Button) findViewById(R.id.registration);
 
@@ -76,10 +78,13 @@ public class CustomerLoginActivity extends AppCompatActivity {
                     }
                 });
             }
+
+
+
+
         });
 */
-        final String email = mEmail.getText().toString();
-        final String password = mPassword.getText().toString();
+
 
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +92,9 @@ public class CustomerLoginActivity extends AppCompatActivity {
                 if (!validateForm()) {
                     return;
                 }
+                final String email = mEmail.getText().toString();
+                final String password = mPassword.getText().toString();
+                System.out.println("EMAIL: " + email + "PASSWORD: " + password);
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(CustomerLoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

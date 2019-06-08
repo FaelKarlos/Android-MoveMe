@@ -25,7 +25,7 @@ public class EntrarPassageiro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrar_passageiro);
 
-        usuario = (EditText) findViewById(R.id.edtUsuarioMotorista);
+        usuario = (EditText) findViewById(R.id.edtPassageiro);
         senha = (EditText) findViewById(R.id.edtSenhaPassageiro);
 
         btnAcessar = (Button) findViewById(R.id.btnEntrarUsuario);
