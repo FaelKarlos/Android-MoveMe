@@ -30,7 +30,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_login);
+        setContentView(R.layout.activity_entrar_passageiro);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -47,8 +47,8 @@ public class CustomerLoginActivity extends AppCompatActivity {
             }
         };
 
-        mEmail = (EditText) findViewById(R.id.email);
-        mPassword = (EditText) findViewById(R.id.password);
+        mEmail = (EditText) findViewById(R.id.edtUsuarioMotorista);
+        mPassword = (EditText) findViewById(R.id.edtSenhaPassageiro);
 
         mLogin = (Button) findViewById(R.id.login);
         mRegistration = (Button) findViewById(R.id.registration);

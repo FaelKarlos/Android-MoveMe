@@ -31,7 +31,7 @@ public class RecuperarSenhaEtapaDois extends AppCompatActivity {
         email = (EditText) findViewById(R.id.edtEmail);
         senha = (EditText) findViewById(R.id.edtSenha);
 
-        //Pegando email para comparar
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         passageiroBundle = (Passageiro) intent.getSerializableExtra("DADOS_USUARIO");
@@ -53,8 +53,29 @@ public class RecuperarSenhaEtapaDois extends AppCompatActivity {
 
         Intent intent = new Intent(this, EntrarPassageiro.class);
 
+        //Cria um objeto passageiro
+        passageiroBundle.setSenha(senha.getText().toString());
 
+        //Converte o objeto Passageiro para Json
+        Gson gson = new Gson();
+        String jsonUsuario = gson.toJson(passageiroBundle);
 
+        String r = "";
+        String operacao = "editar";
+
+        try {
+            //Conecta com web service e passa o Json para ser tratado
+            //HttpServicePassageiro - classe que cria um thread para acessar o web service
+            Passageiro retorno = new HttpServicePassageiro(jsonUsuario, operacao).execute().get();
+            r = retorno.toString();
+
+            //Imprimi o saída do web service
+            System.out.println("Objeto retornado pelo web service: " + r.toString());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
         startActivity(intent);
     }
 }
