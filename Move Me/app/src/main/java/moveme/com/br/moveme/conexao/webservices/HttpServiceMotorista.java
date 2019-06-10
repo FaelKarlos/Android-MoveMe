@@ -99,7 +99,7 @@ public class HttpServiceMotorista extends AsyncTask<String, Void, Motorista> {
                 //Localização do web service
                 String jsonUsuarioLogin = gson.toJson(motorista);
 
-                Motorista motoristaLogin = gson.fromJson(this.motorista, Motorista.class);
+                Motorista motoristaLogin = gson.fromJson(motorista, Motorista.class);
 
                 System.out.println("Usuario passado: " + motoristaLogin.toString());
 
