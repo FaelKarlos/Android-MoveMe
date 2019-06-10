@@ -7,7 +7,7 @@
     android:layout_gravity="center"
 
     android:fitsSystemWindows="true"
-    tools:context=".atividades.RedefinirSenhaPassageiro">
+    tools:context=".atividades.RedefinirSenha">
 
     <LinearLayout
         android:layout_width="fill_parent"

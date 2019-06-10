@@ -2,6 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -10,7 +11,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".maps.CustomerMapActivity">
+        tools:context=".maps.DriverLoginActivity">
 
         <TextView
             android:id="@+id/txtBemVindoUsuario"
@@ -43,7 +44,7 @@
             app:layout_constraintTop_toBottomOf="@+id/Moveme" />
 
         <TextView
-            android:id="@+id/txtCadastre_seMotorista"
+            android:id="@+id/txtCadastreMotorista"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -51,7 +52,6 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="64dp"
-            android:onClick="cadastrar"
             android:text="@string/lbl_aqui_usuario"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -80,10 +80,10 @@
             android:layout_marginTop="16dp"
             android:text="@string/lbl_senha"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtPassageiro" />
+            app:layout_constraintTop_toBottomOf="@+id/edtMotorista" />
 
         <EditText
-            android:id="@+id/edtPassageiro"
+            android:id="@+id/edtMotorista"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -92,14 +92,13 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
 
         <EditText
-            android:id="@+id/edtSenhaPassageiro"
+            android:id="@+id/edtSenhaMotorista"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -117,44 +116,46 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="80dp"
             android:text="@string/lbl_esqueceu_senha"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtSenhaPassageiro" />
+            app:layout_constraintTop_toBottomOf="@+id/edtSenhaMotorista" />
 
         <TextView
             android:id="@+id/txtIrRedefinirSenhaMotorista"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="8dp"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:onClick="recuperarSenha"
             android:text="@string/lbl_redefinir"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/edtSenhaPassageiro" />
+            app:layout_constraintTop_toBottomOf="@+id/btnEntrarMotorista" />
 
         <Button
             android:id="@+id/btnEntrarMotorista"
             android:layout_width="@android:dimen/thumbnail_height"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:text="@string/lbl_acessar"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtIrRedefinirSenhaMotorista" />
+            app:layout_constraintTop_toBottomOf="@+id/edtSenhaMotorista" />
 
         <TextView
             android:id="@+id/Moveme"
