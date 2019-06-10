@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import moveme.com.br.moveme.R;
 
-public class RedefinirSenhaPassageiro extends AppCompatActivity {
+public class RedefinirSenha extends AppCompatActivity {
 
     private EditText inputEmail;
 
@@ -61,9 +61,9 @@ public class RedefinirSenhaPassageiro extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(RedefinirSenhaPassageiro.this, "Nós Enviamos um link para a recuperação de senha pelo email!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RedefinirSenha.this, "Nós Enviamos um link para a recuperação de senha pelo email!", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(RedefinirSenhaPassageiro.this, "Falha ao enviar o email de recuperação de senha!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RedefinirSenha.this, "Falha ao enviar o email de recuperação de senha!", Toast.LENGTH_SHORT).show();
                                 }
 
                                 progressBar.setVisibility(View.GONE);

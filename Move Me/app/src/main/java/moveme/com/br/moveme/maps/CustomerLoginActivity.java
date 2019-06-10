@@ -17,8 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import moveme.com.br.moveme.R;
-import moveme.com.br.moveme.atividades.CadastroPassageiro;
-import moveme.com.br.moveme.atividades.RedefinirSenhaPassageiro;
+import moveme.com.br.moveme.atividades.CadastroMotorista;
+import moveme.com.br.moveme.atividades.RedefinirSenha;
 
 public class CustomerLoginActivity extends AppCompatActivity {
 
@@ -44,7 +44,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }else{
-                    System.out.println("Erro da disgraça.");
+                    System.out.println("Erro");
                 }
             }
         };
@@ -54,8 +54,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
 
         mLogin = findViewById(R.id.btnEntrarUsuario);
 
-
-
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,12 +62,11 @@ public class CustomerLoginActivity extends AppCompatActivity {
                 }
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
-                System.out.println("EMAIL: " + email + "PASSWORD: " + password);
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(CustomerLoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(CustomerLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CustomerLoginActivity.this, "Erro", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -114,11 +111,11 @@ public class CustomerLoginActivity extends AppCompatActivity {
     }
 
     public void cadastrar(View v){
-        Intent cadastrar = new Intent(this, CadastroPassageiro.class);
+        Intent cadastrar = new Intent(this, CadastroMotorista.class);
         startActivity(cadastrar);
     }
     public void recuperarSenha(View v){
-        Intent recuperaSenha = new Intent(this, RedefinirSenhaPassageiro.class);
+        Intent recuperaSenha = new Intent(this, RedefinirSenha.class);
         startActivity(recuperaSenha);
     }
 

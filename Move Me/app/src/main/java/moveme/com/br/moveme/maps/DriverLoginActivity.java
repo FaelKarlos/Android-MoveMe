@@ -14,10 +14,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import moveme.com.br.moveme.R;
+import moveme.com.br.moveme.atividades.CadastroMotorista;
+import moveme.com.br.moveme.atividades.CadastroPassageiro;
+import moveme.com.br.moveme.atividades.RedefinirSenha;
 
 public class DriverLoginActivity extends AppCompatActivity {
     private EditText mEmail, mPassword;
@@ -28,7 +29,7 @@ public class DriverLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_driver_login);
+        setContentView(R.layout.activity_entrar_passageiro);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -45,10 +46,10 @@ public class DriverLoginActivity extends AppCompatActivity {
             }
         };
 
-        mEmail = (EditText) findViewById(R.id.emailRP);
-        mPassword = (EditText) findViewById(R.id.password);
+        mEmail = (EditText) findViewById(R.id.edtMotorista);
+        mPassword = (EditText) findViewById(R.id.edtSenhaMotorista);
 
-        mLogin = (Button) findViewById(R.id.login);
+        mLogin = (Button) findViewById(R.id.btnEntrarMotorista);
 
 
         mLogin.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +61,7 @@ public class DriverLoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(DriverLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DriverLoginActivity.this, "Erro no Login", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -79,5 +80,14 @@ public class DriverLoginActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mAuth.removeAuthStateListener(firebaseAuthListener);
+    }
+
+    public void cadastrar(View v){
+        Intent cadastrar = new Intent(this, CadastroMotorista.class);
+        startActivity(cadastrar);
+    }
+    public void recuperarSenha(View v){
+        Intent recuperaSenha = new Intent(this, RedefinirSenha.class);
+        startActivity(recuperaSenha);
     }
 }
