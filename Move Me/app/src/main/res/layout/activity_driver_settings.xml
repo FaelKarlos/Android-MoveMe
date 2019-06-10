@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.br.moveme.CustomerSettingsActivity"
+    tools:context=".maps.DriverSettingsActivity"
     android:orientation="vertical"
     android:padding="20sp">
     <ImageView
@@ -44,17 +44,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Carro"
-            android:id="@+id/UberX"/>
+            android:id="@+id/car"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Van"
-            android:id="@+id/UberBlack"/>
+            android:id="@+id/van"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Furgão"
-            android:id="@+id/UberXl"/>
+            android:id="@+id/furgao"/>
     </RadioGroup>
 
     <Button

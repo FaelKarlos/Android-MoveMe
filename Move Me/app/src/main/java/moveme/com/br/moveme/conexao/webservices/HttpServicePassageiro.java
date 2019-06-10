@@ -144,6 +144,53 @@ public class HttpServiceMotorista extends AsyncTask<String, Void, Motorista> {
             }
         }
 
+        if(operacao.equals("recuperarSenha")){
+            //Conexão com o web service
+            try {
+                //Localização do web service
+                String jsonUsuarioLogin = gson.toJson(passageiro);
+
+                Passageiro passageiroResetaSenha = gson.fromJson(passageiro, Passageiro.class);
+
+                System.out.println("Usuario passado: " + passageiroResetaSenha.toString());
+
+                URL url = new URL("http://b8439639.ngrok.io/MoveMe/rest/passageiro/resuperarsenha/" + passageiroResetaSenha.getEmail() + "/");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+
+                //Prepara para enviar dados para a requisição
+                InputStream inputStream = connection.getInputStream();
+                if (inputStream == null) {
+                    return null;
+                }
+                //Pega o que foi retornado pelo web service
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+                String linha;
+                StringBuffer buffer = new StringBuffer();
+                while((linha = reader.readLine()) != null) {
+                    buffer.append(linha);
+                }
+
+                String str = buffer.toString();
+                //System.out.println("String object do buffer: "+str);
+                //Fecha a conexão, deve-se fechar sempre após pegar a resposta
+                connection.disconnect();
+
+
+                //Imprimi a resposta
+                //System.out.println("Reposta do servidor na htppService: " + buffer.toString());
+
+                String retornado = gson.toJson(str);
+
+                passageiroRetorno = gson.fromJson(str, Passageiro.class);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         if(operacao.equals("apagar")){
             //Conexão com o web service
             try {

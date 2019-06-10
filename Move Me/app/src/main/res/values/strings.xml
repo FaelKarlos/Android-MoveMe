@@ -16,7 +16,7 @@
     <string name="lbl_nome_cadastro_passageiro">Nome</string>
     <string name="lbl_sobrenome_cadastro_passageiro">Sobrenome</string>
     <string name="lbl_cpf_passageiro">CPF</string>
-    <string name="lbl_email_passageiro">E-mail</string>
+    <string name="lbl_email_passageiro">Recuperação de senha</string>
     <string name="lbl_telefone_passageiro">Telefone</string>
     <string name="lbl_senha_passageiro">Senha</string>
     <string name="lbl_esqueci_minha_senha_parte_1">Recuperar Senha</string>
@@ -35,5 +35,40 @@
     <string name="lbl_tempo_mensagem">Tempo estimado de viagem:</string>
     <string name="lbl_guardar_nos_favoritos">Guardar nos favoritos?</string>
     <string name="lbl_iniciar">Iniciar viagem</string>
-    <string name="title_activity_karol">Karol</string>
+    <string-array name="cozinhas">
+        <item>French</item>
+        <item>Japanese</item>
+        <item>Desserts</item>
+        <item>Seafood</item>
+        <item>Asian</item>
+        <item>Filipino</item>
+        <item>Indian</item>
+        <item>korean</item>
+        <item>European</item>
+        <item>Mexican</item>
+        <item>Brasilian</item>
+    </string-array>
+    <string-array name="avaliacao">
+        <item>Excelent</item>
+        <item>Very Good</item>
+        <item>Good</item>
+        <item>Average</item>
+    </string-array>
+    <string-array name="votos">
+        <item>0 - 30</item>
+        <item>30 - 60</item>
+        <item>60 - 90</item>
+        <item>90 - 150</item>
+        <item>150 - 200</item>
+        <item>200 - 300</item>
+        <item>+300</item>
+    </string-array>
+    <string-array name="precoTaxa">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>

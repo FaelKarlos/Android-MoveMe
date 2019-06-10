@@ -26,11 +26,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".atividades.EntrarPassageiro" />
-        <activity android:name=".atividades.EntrarMotorista" />
         <activity android:name=".atividades.TelaEntradaPassageiro" />
         <activity android:name=".atividades.CadastroPassageiro" />
-        <activity android:name=".atividades.RedefinirSenhaPassageiro" />
+        <activity android:name=".atividades.RedefinirSenha" />
         <activity android:name=".atividades.TelaEntradaMotorista" />
         <activity android:name=".atividades.CadastroMotorista" />
         <activity android:name=".atividades.RecuperarSenhaEtapaDois" />
