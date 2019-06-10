@@ -16,7 +16,7 @@
     <string name="lbl_nome_cadastro_passageiro">Nome</string>
     <string name="lbl_sobrenome_cadastro_passageiro">Sobrenome</string>
     <string name="lbl_cpf_passageiro">CPF</string>
-    <string name="lbl_email_passageiro">E-mail</string>
+    <string name="lbl_email_passageiro">Recuperação de senha</string>
     <string name="lbl_telefone_passageiro">Telefone</string>
     <string name="lbl_senha_passageiro">Senha</string>
     <string name="lbl_esqueci_minha_senha_parte_1">Recuperar Senha</string>

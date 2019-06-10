@@ -68,6 +68,8 @@ public class CadastroPassageiro extends AppCompatActivity {
         mRegistration = (Button) findViewById(R.id.btnCadastroPassageiro);
 
         mRegistration.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
 
@@ -119,6 +121,7 @@ public class CadastroPassageiro extends AppCompatActivity {
                         } else {
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
+                            Toast.makeText(CadastroPassageiro.this, "Cadastro efetuado com sucesso (FIREBASE)!", Toast.LENGTH_SHORT).show();
                             current_user_db.setValue(true);
                             Toast.makeText(CadastroPassageiro.this, "Erro de Login", Toast.LENGTH_SHORT).show();
                         }

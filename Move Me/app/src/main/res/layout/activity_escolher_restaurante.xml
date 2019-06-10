@@ -5,43 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".atividades.EscolherRestaurante">
 
         <Spinner
             android:id="@+id/sp_cozinha"
-            android:layout_width="127dp"
-            android:layout_height="47dp"
+            android:layout_width="227dp"
+            android:layout_height="44dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="48dp"
+
+            android:layout_marginTop="44dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-
-            app:layout_constraintEnd_toStartOf="@+id/btn_buscar"
-            app:layout_constraintHorizontal_bias="0.183"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Button
             android:id="@+id/btn_buscar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginRight="80dp"
+            android:layout_width="213dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:text="Buscar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sp_taxa" />
 
         <Spinner
             android:id="@+id/sp_votos"
-            android:layout_width="127dp"
-            android:layout_height="47dp"
+            android:layout_width="227dp"
+            android:layout_height="44dp"
             android:layout_marginTop="60dp"
 
             app:layout_constraintEnd_toEndOf="@+id/sp_cozinha"
@@ -50,8 +50,8 @@
 
         <Spinner
             android:id="@+id/sp_avaliacao"
-            android:layout_width="127dp"
-            android:layout_height="47dp"
+            android:layout_width="227dp"
+            android:layout_height="44dp"
             android:layout_marginTop="60dp"
 
             app:layout_constraintEnd_toEndOf="@+id/sp_votos"
@@ -61,8 +61,8 @@
 
         <Spinner
             android:id="@+id/sp_faixaPreco"
-            android:layout_width="127dp"
-            android:layout_height="47dp"
+            android:layout_width="227dp"
+            android:layout_height="44dp"
             android:layout_marginTop="60dp"
 
             app:layout_constraintEnd_toEndOf="@+id/sp_avaliacao"
@@ -71,23 +71,28 @@
 
         <Spinner
             android:id="@+id/sp_taxa"
-            android:layout_width="127dp"
-            android:layout_height="47dp"
+            android:layout_width="227dp"
+            android:layout_height="44dp"
             android:layout_marginTop="60dp"
 
             app:layout_constraintEnd_toEndOf="@+id/sp_faixaPreco"
             app:layout_constraintStart_toStartOf="@+id/sp_faixaPreco"
             app:layout_constraintTop_toBottomOf="@+id/sp_faixaPreco" />
 
-        <ListView
-            android:layout_width="191dp"
-            android:layout_height="504dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/sp_avaliacao"
-            app:layout_constraintTop_toBottomOf="@+id/btn_buscar" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Escolha do Restaurante"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
