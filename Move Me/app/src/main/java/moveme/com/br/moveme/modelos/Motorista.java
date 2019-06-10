@@ -1,6 +1,8 @@
 package moveme.com.br.moveme.modelos;
 
-public class Motorista {
+import java.io.Serializable;
+
+public class Motorista implements Serializable{
     private Integer id;
     private String nome;
 

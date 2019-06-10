@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WSPredicao</string>
+    <string name="title_activity_dados_retornados">DadosRetornados</string>
+</resources>

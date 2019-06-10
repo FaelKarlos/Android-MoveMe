@@ -15,42 +15,43 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 import moveme.com.br.moveme.configuracaoes.URLWebServices;
+import moveme.com.br.moveme.modelos.Motorista;
 import moveme.com.br.moveme.modelos.Passageiro;
 
 //Classe para conectar com o web service
-public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
+public class HttpServiceMotorista extends AsyncTask<String, Void, Motorista> {
 
-    private String passageiro;
+    private String motorista;
     private String operacao;
 
-    //Construtor com um parâmetro, que nesse caso é o passageiro a ser inserido
-    public HttpServicePassageiro(String passageiro, String operacao) {
-        this.passageiro = passageiro;
+    //Construtor com um parâmetro, que nesse caso é o motorista a ser inserido
+    public HttpServiceMotorista(String motorista, String operacao) {
+        this.motorista = motorista;
         this.operacao = operacao;
     }
 
-    public HttpServicePassageiro() {
+    public HttpServiceMotorista() {
 
     }
 
     @Override
-    protected Passageiro doInBackground(String... voids) {
+    protected Motorista doInBackground(String... voids) {
         StringBuilder resposta = new StringBuilder();
         System.out.println("Operação passada por parametro: " + operacao);
         Gson gson = new Gson();
 
-        //Converte o Passageiro passado para Json
-        String jsonUsuario = gson.toJson(passageiro);
+        //Converte o motorista passado para Json
+        String jsonUsuario = gson.toJson(motorista);
 
-        Passageiro passageiroRetorno = gson.fromJson(passageiro, Passageiro.class);
+        Motorista motoristaRetorno = gson.fromJson(motorista, Motorista.class);
         if (operacao.equals("inserir")){
-            //Cria o objeto Passageiro recebido no construtor
+            //Cria o objeto motorista recebido no construtor
 
             //Conexão com o web service
             try {
                 //Localização do web service
 
-                URL url = new URL("http://b8439639.ngrok.io/MoveMe/rest/passageiro/inserir");
+                URL url = new URL("http://b8439639.ngrok.io/MoveMe/rest/motorista/inserir");
 
                 //Abre a conexão
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -70,8 +71,8 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
                 //Prepara para enviar dados para a requisição
                 OutputStream writer = connection.getOutputStream();
 
-                //Envia o Passageiro passado no construtor
-                writer.write(passageiro.getBytes());
+                //Envia o motorista passado no construtor
+                writer.write(motorista.getBytes());
                 writer.flush();
 
                 //Pega o que foi retornado pelo web service
@@ -100,13 +101,13 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
             //Conexão com o web service
             try {
                 //Localização do web service
-                String jsonUsuarioLogin = gson.toJson(passageiro);
+                String jsonUsuarioLogin = gson.toJson(motorista);
 
-                Passageiro passageiroLogin = gson.fromJson(passageiro, Passageiro.class);
+                Motorista motoristaLogin = gson.fromJson(motorista, Motorista.class);
 
-                System.out.println("Usuario passado: " + passageiroLogin.toString());
+                System.out.println("Usuario passado: " + motoristaLogin.toString());
 
-                URL url = new URL("http://b8439639.ngrok.io/MoveMe/rest/passageiro/" + passageiroLogin.getCpf() + "/");
+                URL url = new URL("http://b8439639.ngrok.io/MoveMe/rest/motorista/" + motoristaLogin.getNome() + "/");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
 
@@ -135,7 +136,7 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
 
                 String retornado = gson.toJson(str);
 
-                passageiroRetorno = gson.fromJson(str, Passageiro.class);
+                motoristaRetorno = gson.fromJson(str, Motorista.class);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -147,13 +148,13 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
             //Conexão com o web service
             try {
                 //Localização do web service
-                String jsonUsuarioLogin = gson.toJson(passageiro);
+                String jsonUsuarioLogin = gson.toJson(motorista);
 
-                Passageiro passageiroLogin = gson.fromJson(passageiro, Passageiro.class);
+                Motorista motoristaLogin = gson.fromJson(motorista, Motorista.class);
 
-                System.out.println("Usuario passado: " + passageiroLogin.toString());
+                System.out.println("Usuario passado: " + motoristaLogin.toString());
 
-                URL url = new URL("http://b8439639.ngrok.io/MoveMe/rest/passageiro/" + passageiroLogin.getCpf() + "/");
+                URL url = new URL("http://b8439639.ngrok.io/MoveMe/rest/motorista/" + motoristaLogin.getNome() + "/");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("DELETE");
 
@@ -182,7 +183,7 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
 
                 String retornado = gson.toJson(str);
 
-                passageiroRetorno = gson.fromJson(str, Passageiro.class);
+                motoristaRetorno = gson.fromJson(str, Motorista.class);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -191,13 +192,13 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
         }
 
         if(operacao.equals("editar")){
-            //Cria o objeto Passageiro recebido no construtor
+            //Cria o objeto motorista recebido no construtor
 
             //Conexão com o web service
             try {
                 //Localização do web service
 
-                URL url = new URL("http://b8439639.ngrok.io/MoveMe/rest/passageiro/editar");
+                URL url = new URL("http://b8439639.ngrok.io/MoveMe/rest/motorista/editar");
 
                 //Abre a conexão
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -217,8 +218,8 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
                 //Prepara para enviar dados para a requisição
                 OutputStream writer = connection.getOutputStream();
 
-                //Envia o Passageiro passado no construtor
-                writer.write(passageiro.getBytes());
+                //Envia o motorista passado no construtor
+                writer.write(motorista.getBytes());
                 writer.flush();
 
                 //Pega o que foi retornado pelo web service
@@ -247,18 +248,18 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
 
 
         if(operacao.equals("deletar")){
-            //Cria o objeto Passageiro recebido no construtor
+            //Cria o objeto motorista recebido no construtor
 
             //Conexão com o web service
             try {
                 //Localização do web service
 
-                String jsonUsuarioLogin = gson.toJson(passageiro);
+                String jsonUsuarioLogin = gson.toJson(motorista);
 
-                Passageiro passageiroLogin = gson.fromJson(passageiro, Passageiro.class);
+                Motorista motoristaLogin = gson.fromJson(motorista, Motorista.class);
 
-                System.out.println("Usuario passado: " + passageiroLogin.toString());
-                URL url = new URL("http://b8439639.ngrok.io/MoveMe/rest/passageiro/" + passageiroLogin.getCpf());
+                System.out.println("Usuario passado: " + motoristaLogin.toString());
+                URL url = new URL("http://b8439639.ngrok.io/MoveMe/rest/motorista/" + motoristaLogin.getNome());
 
                 //Abre a conexão
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -278,8 +279,8 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
                 //Prepara para enviar dados para a requisição
                 OutputStream writer = connection.getOutputStream();
 
-                //Envia o Passageiro passado no construtor
-                writer.write(passageiro.getBytes());
+                //Envia o motorista passado no construtor
+                writer.write(motorista.getBytes());
                 writer.flush();
 
                 //Pega o que foi retornado pelo web service
@@ -306,8 +307,8 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
 
         }
 
-        //Retorno para passageiro retornado pelo web service
-        return passageiroRetorno;
+        //Retorno para motorista retornado pelo web service
+        return motoristaRetorno;
     }
 }
 
