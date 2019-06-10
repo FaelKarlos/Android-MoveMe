@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.br.moveme.HistoryActivity"
+    tools:context="maps.HistoryActivity"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:id="@+id/layout">
@@ -17,7 +17,7 @@
             android:padding="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Balance: 0€"
+            android:text="Saldo: R$ 0"
             android:id="@+id/balance"
             android:visibility="gone"/>
         <EditText
@@ -25,10 +25,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/payoutEmail"
-            android:hint="paypal email"/>
+            android:hint="PayPal email"/>
         <Button
             android:visibility="gone"
-            android:text="payout"
+            android:text="Pagamento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/payout"/>

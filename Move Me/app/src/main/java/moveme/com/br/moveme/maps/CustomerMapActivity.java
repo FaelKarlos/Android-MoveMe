@@ -115,7 +115,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mRatingBar = (RatingBar) findViewById(R.id.ratingBar);
 
         mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-        mRadioGroup.check(R.id.UberX);
+        mRadioGroup.check(R.id.car);
 
         mLogout = (Button) findViewById(R.id.logout);
         mRequest = (Button) findViewById(R.id.request);
@@ -248,7 +248,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                                     getDriverLocation();
                                     getDriverInfo();
                                     getHasRideEnded();
-                                    mRequest.setText("Looking for Driver Location....");
+                                    mRequest.setText("Procurando a Localização do Motorista...");
                                 }
                             }
                         }
@@ -331,9 +331,9 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     float distance = loc1.distanceTo(loc2);
 
                     if (distance<100){
-                        mRequest.setText("Driver's Here");
+                        mRequest.setText("O motorista está aqui!");
                     }else{
-                        mRequest.setText("Driver Found: " + String.valueOf(distance));
+                        mRequest.setText("Motorista Encontrado: " + String.valueOf(distance));
                     }
 
 

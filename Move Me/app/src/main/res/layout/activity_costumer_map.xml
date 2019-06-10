@@ -30,13 +30,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/history"
-                android:text="history"/>
+                android:text="Histórico"/>
             <Button
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/settings"
-                android:text="Settings"/>
+                android:text="Opções"/>
         </LinearLayout>
 
         <android.support.v7.widget.CardView
@@ -120,24 +120,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Carro"
-                    android:id="@+id/UberX"/>
+                    android:id="@+id/car"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Van"
-                    android:id="@+id/UberBlack"/>
+                    android:id="@+id/van"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Furgão"
-                    android:id="@+id/UberXl"/>
+                    android:id="@+id/furgao"/>
             </RadioGroup>
 
             <Button
                 android:layout_gravity="bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="call Uber"
+                android:text="Buscar Motorista"
                 android:id="@+id/request"/>
         </LinearLayout>
     </LinearLayout>
