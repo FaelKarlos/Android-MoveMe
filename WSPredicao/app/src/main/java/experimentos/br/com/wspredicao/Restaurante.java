@@ -1,6 +1,8 @@
 package experimentos.br.com.wspredicao;
 
-public class Restaurante {
+import java.io.Serializable;
+
+public class Restaurante implements Serializable{
 
     private String nome;
     private String cidade;
@@ -8,7 +10,7 @@ public class Restaurante {
     private Double latitude;
     private String cozinha;
     private int alcance_preco;
-    private int classifi_agregada;
+    private double classifi_agregada;
     private String taxa_votos;
     private int votos;
 
@@ -63,7 +65,7 @@ public class Restaurante {
         this.alcance_preco = alcance_preco;
     }
 
-    public int getClassifi_agregada() {
+    public double getClassifi_agregada() {
         return classifi_agregada;
     }
 

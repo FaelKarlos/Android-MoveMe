@@ -32,8 +32,8 @@ public class HttpServiceRestaurante extends AsyncTask<String, Void, Restaurante>
 
         //Converte o Passageiro passado para Json
         String jsonUsuario = gson.toJson(escolha);
+        Restaurante restaurante = new Restaurante();
 
-        System.out.println("Dao recebidos: " + escolha.toString());
         Escolha passageiroRetorno = gson.fromJson(escolha, Escolha.class);
 
             //Cria o objeto Passageiro recebido no construtor
@@ -41,10 +41,9 @@ public class HttpServiceRestaurante extends AsyncTask<String, Void, Restaurante>
             //Conexão com o web service
             try {
                 //Localização do web service
+                //http://127.0.0.1/mm?cozinha=Japanese&taxa_votos=Excellent&alcance_preco=4&classifi_agregada=4.7&votos=600
+                URL url = new URL("http://d055689b.ngrok.io/api?cozinha=" + passageiroRetorno.getCozinha() + "&taxa_votos=" + passageiroRetorno.getTaxa_votos() + "&alcance_preco=" + passageiroRetorno.getAlcance_preco() + "&classifi_agregada=" + passageiroRetorno.getClassifi_agregada() + "&votos=" + passageiroRetorno.getVotos());
 
-                URL url = new URL("http://127.0.0.1:8081/");
-
-                //Abre a conexão
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 try {
                     //Defini o verbo HTTP
@@ -57,34 +56,42 @@ public class HttpServiceRestaurante extends AsyncTask<String, Void, Restaurante>
                 connection.setDoOutput(true);
                 connection.setConnectTimeout(5000);
 
-                //Prepara para enviar dados para a requisição
-                OutputStream writer = connection.getOutputStream();
-
-                //Envia o Passageiro passado no construtor
-                writer.write(escolha.getBytes());
-                writer.flush();
-
                 //Pega o que foi retornado pelo web service
                 BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
-
+/*
                 String retorno;
                 //Escreve o retorno em uma variável
                 while ((retorno = br.readLine()) != null) {
                     System.out.println(retorno);
+                }*/
+
+                String linha;
+                StringBuffer buffer = new StringBuffer();
+                while((linha = br.readLine()) != null) {
+                    buffer.append(linha);
                 }
 
+                String str = buffer.toString();
+                //System.out.println("String object do buffer: "+str);
+                //Fecha a conexão, deve-se fechar sempre após pegar a resposta
+                connection.disconnect();
+
+
+                //Imprimi a resposta
+                //System.out.println("Reposta do servidor na htppService: " + buffer.toString());
+
+                String retornado = gson.toJson(str);
                 //Fecha a conexão, deve-se fechar sempre após pegar a resposta
                 connection.disconnect();
 
                 //Imprimi a resposta
-                System.out.println(resposta.toString());
-
+                restaurante = gson.fromJson(str, Restaurante.class);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-        return null;
+        return restaurante;
     }
 }
