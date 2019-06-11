@@ -128,9 +128,8 @@ public class HttpServiceMotorista extends AsyncTask<String, Void, Motorista> {
 
 
                 //Imprimi a resposta
-                //System.out.println("Reposta do servidor na htppService: " + buffer.toString());
+                System.out.println("Reposta do servidor na htppService: " + buffer.toString());
 
-                String retornado = gson.toJson(str);
 
                 motoristaRetorno = gson.fromJson(str, Motorista.class);
             } catch (MalformedURLException e) {

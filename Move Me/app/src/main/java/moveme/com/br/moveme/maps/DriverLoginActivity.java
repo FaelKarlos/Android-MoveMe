@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import moveme.com.br.moveme.R;
 import moveme.com.br.moveme.atividades.CadastroMotorista;
 import moveme.com.br.moveme.atividades.CadastroPassageiro;
+import moveme.com.br.moveme.atividades.EscolherRestaurante;
 import moveme.com.br.moveme.atividades.RedefinirSenha;
 
 public class DriverLoginActivity extends AppCompatActivity {
@@ -29,7 +30,7 @@ public class DriverLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_entrar_passageiro);
+        setContentView(R.layout.activity_entrar_motorista);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -38,7 +39,7 @@ public class DriverLoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    Intent intent = new Intent(DriverLoginActivity.this, DriverMapActivity.class);
+                    Intent intent = new Intent(DriverLoginActivity.this, EscolherRestaurante.class);
                     startActivity(intent);
                     finish();
                     return;

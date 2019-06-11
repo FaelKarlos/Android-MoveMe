@@ -150,9 +150,10 @@ public class CadastroPassageiro extends AppCompatActivity {
 
         String password = senha.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            senha.setError("O campo de senha está vazio!");
-            valid = false;
-        } else {
+                senha.setError("O campo de senha está vazio!");
+                valid = false;
+        }
+        else {
             senha.setError(null);
         }
 

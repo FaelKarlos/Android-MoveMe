@@ -31,7 +31,6 @@
         <activity android:name=".atividades.RedefinirSenha" />
         <activity android:name=".atividades.TelaEntradaMotorista" />
         <activity android:name=".atividades.CadastroMotorista" />
-        <activity android:name=".atividades.RecuperarSenhaEtapaDois" />
         <activity android:name=".atividades.EscolherRestaurante" />
         <activity android:name=".atividades.EditarContaPassageiro"></activity>
         <activity android:name=".maps.CustomerLoginActivity"></activity>

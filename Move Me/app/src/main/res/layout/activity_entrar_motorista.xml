@@ -55,10 +55,12 @@
             android:text="@string/lbl_aqui_usuario"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
+            android:onClick="cadastrar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/txt_cadastre_se"
-            app:layout_constraintTop_toBottomOf="@+id/Moveme" />
+            app:layout_constraintTop_toBottomOf="@+id/Moveme"
+            />
 
         <TextView
             android:id="@+id/txtUsuario"
