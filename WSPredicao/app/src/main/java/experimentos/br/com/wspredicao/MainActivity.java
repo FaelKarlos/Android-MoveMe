@@ -1,5 +1,6 @@
 package experimentos.br.com.wspredicao;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,17 +41,20 @@ public class MainActivity extends AppCompatActivity {
         passageiro.setTaxa_votos(taxavotos);
         passageiro.setVotos(Integer.parseInt(votos));
 
-        System.out.println("Dados escolha: " + passageiro.toString());
-
         Gson gson = new Gson();
         String jsonEscolha = gson.toJson(passageiro);
 
-        System.out.println("JSON para WS: " + jsonEscolha.toString());
         try {
             Restaurante retorno = new HttpServiceRestaurante(jsonEscolha).execute().get();
 
             if (retorno != null){
-                System.out.println("Restaurante buscado");
+                Intent it = new Intent(this, DadosRetornados.class);
+
+                Bundle bundle = new Bundle();
+                //Adicionando o objeto Experimento ao bundle
+                it.putExtra("DADOS_RESTAURANTE", retorno);
+
+                startActivity(it);
             }
         } catch (ExecutionException e) {
             e.printStackTrace();
