@@ -148,9 +148,9 @@ public class HttpServiceMotorista extends AsyncTask<String, Void, Motorista> {
             //Conexão com o web service
             try {
                 //Localização do web service
-                String jsonUsuarioLogin = gson.toJson(passageiro);
+                String jsonUsuarioLogin = gson.toJson(motorista);
 
-                Passageiro passageiroResetaSenha = gson.fromJson(passageiro, Passageiro.class);
+                Passageiro passageiroResetaSenha = gson.fromJson(motorista, Passageiro.class);
 
                 System.out.println("Usuario passado: " + passageiroResetaSenha.toString());
 
@@ -183,7 +183,6 @@ public class HttpServiceMotorista extends AsyncTask<String, Void, Motorista> {
 
                 String retornado = gson.toJson(str);
 
-                passageiroRetorno = gson.fromJson(str, Passageiro.class);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
