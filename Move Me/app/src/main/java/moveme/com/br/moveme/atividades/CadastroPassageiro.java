@@ -186,7 +186,6 @@ public class CadastroPassageiro extends AppCompatActivity {
                         System.out.println("Deu ruim catch 1");
                         e.printStackTrace();
                     } catch (ExecutionException e) {
-                        System.out.println("Deu ruim catch 2");
                         e.printStackTrace();
                     }
 

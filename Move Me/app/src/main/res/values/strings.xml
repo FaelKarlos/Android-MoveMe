@@ -71,4 +71,9 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+
+    <string-array name="taxavotos">
+        <item>Excellent</item>
+        <item>Good</item>
+    </string-array>
 </resources>

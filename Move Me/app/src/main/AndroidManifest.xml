@@ -14,7 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service android:name="moveme.com.br.moveme.maps.onAppKilled" android:stopWithTask="false"/>
+        <activity android:name=".atividades.AvaliarViagem"></activity>
+
+        <service
+            android:name=".maps.onAppKilled"
+            android:stopWithTask="false" />
+
         <activity android:name=".atividades.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -32,15 +38,15 @@
         <activity android:name=".atividades.TelaEntradaMotorista" />
         <activity android:name=".atividades.CadastroMotorista" />
         <activity android:name=".atividades.EscolherRestaurante" />
-        <activity android:name=".atividades.EditarContaPassageiro"></activity>
-        <activity android:name=".maps.CustomerLoginActivity"></activity>
-        <activity android:name=".maps.CustomerMapActivity"></activity>
-        <activity android:name=".maps.DriverMapActivity"></activity>
-        <activity android:name=".maps.CustomerSettingsActivity"></activity>
-        <activity android:name=".maps.DriverLoginActivity"/>
-        <activity android:name=".maps.HistorySingleActivity"/>
-        <activity android:name=".maps.HistoryActivity"/>
-        <activity android:name=".maps.DriverSettingsActivity"/>
+        <activity android:name=".atividades.EditarContaPassageiro" />
+        <activity android:name=".maps.CustomerLoginActivity" />
+        <activity android:name=".maps.CustomerMapActivity" />
+        <activity android:name=".maps.DriverMapActivity" />
+        <activity android:name=".maps.CustomerSettingsActivity" />
+        <activity android:name=".maps.DriverLoginActivity" />
+        <activity android:name=".maps.HistorySingleActivity" />
+        <activity android:name=".maps.HistoryActivity" />
+        <activity android:name=".maps.DriverSettingsActivity" />
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"

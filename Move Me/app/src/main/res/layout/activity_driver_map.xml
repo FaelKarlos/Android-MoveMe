@@ -23,19 +23,21 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/logout"
                 android:text="logout"/>
+
             <Button
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:id="@+id/history"
-                android:text="Histórico"/>
-            <Button
-                android:layout_weight="1"
-                android:layout_gravity="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Histórico" />
+
+            <Button
                 android:id="@+id/settings"
-                android:text="Opções"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="1"
+                android:text="Opções" />
         </LinearLayout>
         <Switch
             android:layout_width="wrap_content"
@@ -97,8 +99,6 @@
             android:layout_height="wrap_content"
             android:text="Pegar cliente"
             android:id="@+id/rideStatus"/>
-
-
     </LinearLayout>
 </FrameLayout>
 

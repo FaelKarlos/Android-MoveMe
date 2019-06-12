@@ -57,6 +57,7 @@ import java.util.Map;
 
 import moveme.com.br.moveme.R;
 import moveme.com.br.moveme.atividades.MainActivity;
+import moveme.com.br.moveme.modelos.Restaurante;
 
 public class CustomerMapActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -90,12 +91,19 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
     private RatingBar mRatingBar;
 
+    private Restaurante restaurante;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_costumer_map);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        restaurante = (Restaurante) intent.getSerializableExtra("DADOS_RESTAURANTE");
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -240,9 +248,9 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                                     String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                                     HashMap map = new HashMap();
                                     map.put("customerRideId", customerId);
-                                    map.put("destination", "Pires do Rio");
-                                    map.put("destinationLat", "-12.210361");
-                                    map.put("destinationLng", "-38.998031");
+                                    map.put("destination", restaurante.getCidade());
+                                    map.put("destinationLat", restaurante.getLatitude());
+                                    map.put("destinationLng", restaurante.getLongitude());
                                     driverRef.updateChildren(map);
 
                                     getDriverLocation();
@@ -335,8 +343,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     }else{
                         mRequest.setText("Motorista Encontrado: " + String.valueOf(distance));
                     }
-
-
 
                     mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLatLng).title("your driver").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_car)));
                 }
