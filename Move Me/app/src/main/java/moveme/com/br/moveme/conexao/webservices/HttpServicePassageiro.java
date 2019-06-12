@@ -79,14 +79,14 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
                 String retorno;
                 //Escreve o retorno em uma variável
                 while ((retorno = br.readLine()) != null) {
-                    System.out.println(retorno);
+                    System.out.println("Retorna com alterações: " + retorno);
                 }
 
-                //Fecha a conexão, deve-se fechar sempre após pegar a resposta
+
                 connection.disconnect();
 
                 //Imprimi a resposta
-                System.out.println(resposta.toString());
+                //System.out.println("Reposta do servidor na htppService: " + buffer.toString());
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -228,6 +228,8 @@ public class HttpServicePassageiro extends AsyncTask<String, Void, Passageiro> {
                 String retornado = gson.toJson(str);
 
                 passageiroRetorno = gson.fromJson(str, Passageiro.class);
+
+                System.out.println("Jkhksjgfjhgdf: " + passageiroRetorno.toString());
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {

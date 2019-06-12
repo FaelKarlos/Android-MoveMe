@@ -58,11 +58,9 @@ public class EscolherRestaurante extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Cozinha
-
                 String cozinha = spCozinha.getSelectedItem().toString();
 
                 //Votos
-
                 String votos = spVotos.getSelectedItem().toString();
 
                 //Avaliação
@@ -70,11 +68,9 @@ public class EscolherRestaurante extends AppCompatActivity {
                 String avaliacao = spAvaliacao.getSelectedItem().toString();
 
                 //Faixa de Preço
-
                 String preco = spPreco.getSelectedItem().toString();
 
                 //Taxa
-
                 String taxa = spTaxa.getSelectedItem().toString();
                 System.out.println("valores:"+"\n"+cozinha+"\n"+votos+"\n"+avaliacao+"\n"+preco+"\n"+taxa);
 

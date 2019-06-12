@@ -33,6 +33,9 @@ public class CadastroPassageiro extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
+    Passageiro passageiro = new Passageiro();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,29 +67,21 @@ public class CadastroPassageiro extends AppCompatActivity {
             }
         };
 
-
         mRegistration = (Button) findViewById(R.id.btnCadastroPassageiro);
 
+        /*
         mRegistration.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
-
-                if (!validateForm()) {
-                    return;
-                }
-
-                //Pega os valores dos EditText
                 String nomePassageiro = nome.getText().toString();
                 String sobrenomePassageiro = sobrenome.getText().toString();
                 String cpfPassageiro = cpf.getText().toString();
                 String telefonePassageiro = telefone.getText().toString();
-                String emailPassageiro = email.getText().toString();;
+                String emailPassageiro = email.getText().toString();
                 String senhaPassageiro = senha.getText().toString();
 
+
                 //Cria um objeto passageiro
-                Passageiro passageiro = new Passageiro();
                 passageiro.setNome(nomePassageiro + " " + sobrenomePassageiro);
                 passageiro.setCpf(cpfPassageiro);
                 passageiro.setEmail(emailPassageiro);
@@ -95,40 +90,112 @@ public class CadastroPassageiro extends AppCompatActivity {
 
                 //Converte o objeto Passageiro para Json
                 Gson gson = new Gson();
-                String jsonUsuario = gson.toJson(passageiro);
+                String jsonUsuario;
+                jsonUsuario = gson.toJson(passageiro);
+
+                System.out.println("\n\n\n\n\nKarol: " + jsonUsuario);
 
                 String r = "";
                 String operacao = "inserir";
 
-                try {
-                    //Conecta com web service e passa o Json para ser tratado
-                    //HttpServicePassageiro - classe que cria um thread para acessar o web service
-                    Passageiro retorno = new HttpServicePassageiro(jsonUsuario, operacao).execute().get();
-                    r = retorno.toString();
-                    System.out.println(r);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
+                /*
+                    try {
+                        //Conecta com web service e passa o Json para ser tratado
+                        //HttpServicePassageiro - classe que cria um thread para acessar o web service
+                        Passageiro retorno = new HttpServicePassageiro(jsonUsuario, operacao).execute().get();
+                        r = retorno.toString();
+                        if (retorno == null){
+                            Toast.makeText(null, "Passageiro nuloajsdhjkashdkjashdjkahskjdas", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+
+
+                if (!validateForm()) {
+                    return;
                 }
 
 
-                mAuth.createUserWithEmailAndPassword(emailPassageiro, senhaPassageiro).addOnCompleteListener(CadastroPassageiro.this, new OnCompleteListener<AuthResult>() {
+
+                //mAuth.createUserWithEmailAndPassword(emailPassageiro, senhaPassageiro).addOnCompleteListener(CadastroPassageiro.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
-                            Toast.makeText(CadastroPassageiro.this, "Erro de Login", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CadastroPassageiro.this, "Erro no Login", Toast.LENGTH_SHORT).show();
                         } else {
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
+
+
                             Toast.makeText(CadastroPassageiro.this, "Cadastro efetuado com sucesso (FIREBASE)!", Toast.LENGTH_SHORT).show();
                             current_user_db.setValue(true);
                             Toast.makeText(CadastroPassageiro.this, "Erro de Login", Toast.LENGTH_SHORT).show();
                         }
                     }
-                });
+                });*/
+            }
+
+
+    String r = "";
+    String operacao = "inserir";
+    public void cadastrarSaporra(View v){
+        String nomePassageiro = nome.getText().toString();
+        String sobrenomePassageiro = sobrenome.getText().toString();
+        String cpfPassageiro = cpf.getText().toString();
+        String telefonePassageiro = telefone.getText().toString();
+        String emailPassageiro = email.getText().toString();
+        String senhaPassageiro = senha.getText().toString();
+
+
+        //Cria um objeto passageiro
+        passageiro.setNome(nomePassageiro + " " + sobrenomePassageiro);
+        passageiro.setCpf(cpfPassageiro);
+        passageiro.setEmail(emailPassageiro);
+        passageiro.setTelefone(telefonePassageiro);
+        passageiro.setSenha(senhaPassageiro);
+
+
+        if (!validateForm()) {
+            return;
+        }
+
+        mAuth.createUserWithEmailAndPassword(emailPassageiro, senhaPassageiro).addOnCompleteListener(CadastroPassageiro.this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (!task.isSuccessful()) {
+                    Toast.makeText(CadastroPassageiro.this, "Erro no Login", Toast.LENGTH_SHORT).show();
+                } else {
+                    String user_id = mAuth.getCurrentUser().getUid();
+                    DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
+
+
+                    try {
+                        //Conecta com web service e passa o Json para ser tratado
+                        //HttpServicePassageiro - classe que cria um thread para acessar o web service
+                        Gson gson = new Gson();
+                        String jsonUsuario2 = gson.toJson(passageiro);
+                        Passageiro retorno = new HttpServicePassageiro(jsonUsuario2, operacao).execute().get();
+                        r = retorno.toString();
+                        if (retorno == null){
+                            Toast.makeText(null, "Passageiro nuloajsdhjkashdkjashdjkahskjdas", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (InterruptedException e) {
+                        System.out.println("Deu ruim catch 1");
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        System.out.println("Deu ruim catch 2");
+                        e.printStackTrace();
+                    }
+
+                    Toast.makeText(CadastroPassageiro.this, "Cadastro efetuado com sucesso (FIREBASE)!", Toast.LENGTH_SHORT).show();
+                    current_user_db.setValue(true);
+                }
             }
         });
+
     }
 
     @Override
