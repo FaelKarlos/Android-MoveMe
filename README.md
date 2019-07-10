@@ -1,2 +1,2 @@
 # Move-Me
-Projeto Move Me disciplina de Construção de Sistemas
+Compreende toda a parte de desenvolvimento em Android do Move Me 
